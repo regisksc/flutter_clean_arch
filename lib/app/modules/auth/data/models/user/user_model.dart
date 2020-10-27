@@ -4,6 +4,7 @@ import 'package:flutter_clean_arch/app/modules/auth/data/models/user/child_model
 import '../../../../../core/global/model/mapper.dart';
 import '../../../domain/entities/user/child_entities/user_data_entity.dart';
 import '../../../domain/entities/user/user_entity.dart';
+import 'child_models/user_data_model.dart';
 
 class UserModel extends UserEntity implements Mapper {
   const UserModel({
@@ -21,13 +22,15 @@ class UserModel extends UserEntity implements Mapper {
         );
 
   fromJson(Map<String, dynamic> json) {
-    final List<UserServiceModel> servicesList =
-        (json['services'] as List).map((service) => UserServiceModel().fromJson(service));
+    final List<UserServiceModel> servicesList = (json['services'] as List).map(
+      (service) => UserServiceModel().fromJson(service),
+    );
+    final UserDataModel user = UserDataModel().fromJson(json['user']);
     return UserModel(
       code: json['code'] as int,
       message: json['message'] as String,
       token: json['token'] as String,
-      user: json['user'] as UserDataEntity,
+      user: user,
       services: servicesList,
     );
   }
