@@ -21,6 +21,8 @@ environment:
   sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
+  flutter_masked_text: ^0.8.0
+  lottie: ^0.7.0+1
   data_connection_checker:
   flutter_secure_storage:
   http:
